@@ -1,3 +1,6 @@
+import {getTime, timer, setTime} from '/script/timer.js'
+import {renderPlayer} from '/script/player.js'
+
 const renderBackground = (context) => {
     context.fillStyle = 'white'
     context.fillRect(
@@ -14,15 +17,6 @@ const renderRectangles = (context) => {
     context.fillRect(90, 20, 30, 40)
 }
 
-const image = new Image
-image.src = 'jake.png'
-
-let playerY = 20
-let playerX = 130
-
-const renderPlayer = (context) => {
-    context.drawImage(image, playerX, playerY)
-}
 
 // TODO: Vyresit lip cekani na nacitani obrazku.
 /**
@@ -31,7 +25,7 @@ const renderPlayer = (context) => {
 const renderCanvasFrame = (context) => {
     renderBackground(context)
     renderRectangles(context)
-    renderPlayer(context)
+    renderPlayer(context) // TODO: Import from player.
 }
 
 /**
@@ -49,24 +43,13 @@ document.addEventListener('DOMContentLoaded', () => {
     const canvas = document.querySelector('#game-canvas')
     const context = canvas.getContext('2d')
 
-    image.addEventListener('load', () => {
+    // TODO: Consider not waiting for the image to load.
+    //image.addEventListener('load', () => {
         startCanvasRendering(context)
-    })
-})
+    //})
 
-document.addEventListener('keydown', (event) => {
-    switch (event.key) {
-        case 'ArrowDown':
-            playerY += 10
-            break
-        case 'ArrowUp':
-            playerY -= 10
-            break
-        case 'ArrowLeft':
-            playerX -= 10
-            break
-        case 'ArrowRight':
-            playerX += 10
-            break
-    }
+    document.querySelector('#check-time').addEventListener('click', () => {
+        console.log(timer)
+        setTime(100)
+    })
 })
