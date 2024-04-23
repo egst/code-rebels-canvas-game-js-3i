@@ -22,7 +22,8 @@ const updateCoins = (coins) => {
 
 export const renderPlayer = (context) => {
     context.strokeStyle = 'green'
-    context.strokeRect(player.x, player.y, player.width, player.height)
+    // Uncomment to show player's collision box:
+    //context.strokeRect(player.x, player.y, player.width, player.height)
     context.drawImage(image, player.x, player.y)
 }
 
@@ -32,19 +33,32 @@ const collisionWith = (object) =>
     player.y      < object.maxY() &&
     player.maxY() > object.minY()
 
+//let movementLeftBlocked = false
+//let movementRightBlocked = false
+//let movementUpBlocked = false
+//let movementDownBlocked = false
+
 document.addEventListener('keydown', (event) => {
     switch (event.key) {
         case 'ArrowDown':
-            player.y += 10
+            //if (!movementDownBlocked) {
+                player.y += 10
+            //}
             break
         case 'ArrowUp':
-            player.y -= 10
+            //if (!movementUpBlocked) {
+                player.y -= 10
+            //}
             break
         case 'ArrowLeft':
-            player.x -= 10
+            //if (!movementLeftBlocked) {
+                player.x -= 10
+            //}
             break
         case 'ArrowRight':
-            player.x += 10
+            //if (!movementRightBlocked) {
+                player.x += 10
+            //}
             break
     }
 
@@ -52,4 +66,21 @@ document.addEventListener('keydown', (event) => {
         moveCoin()
         updateCoins(player.coins + 1)
     }
+
+    /*
+    if (collisionWith(obstacle)) {
+        if (collisionWith(obstacle.leftWall)) {
+            movementRightBlocked = true
+        }
+        if (collisionWith(obstacle.rightWall)) {
+            movementLeftBlocked = true
+        }
+        if (collisionWith(obstacle.topWall)) {
+            movementDownBlocked = true
+        }
+        if (collisionWith(obstacle.bottomWall)) {
+            movementUpBlocked = true
+        }
+    }
+    */
 })

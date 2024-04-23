@@ -1,6 +1,9 @@
 import {renderObstacle} from '/script/obstacle.js'
 import {renderPlayer}   from '/script/player.js'
 import {renderCoin}     from '/script/coin.js'
+import {canvas}         from '/script/canvas.js'
+
+import '/script/menu.js'
 
 const renderBackground = (context) => {
     context.fillStyle = 'white'
@@ -15,7 +18,7 @@ const renderBackground = (context) => {
  */
 const renderCanvasFrame = (context) => {
     renderBackground(context)
-    renderObstacle(context)
+    //renderObstacle(context)
     renderPlayer(context)
     renderCoin(context)
 }
@@ -32,8 +35,13 @@ const startCanvasRendering = (context) => {
 }
 
 document.addEventListener('DOMContentLoaded', () => {
-    const canvas = document.querySelector('#game-canvas')
-    const context = canvas.getContext('2d')
+    const gameCanvas = document.querySelector('#game-canvas')
+    const context = gameCanvas.getContext('2d')
+    gameCanvas.setAttribute('width', canvas.width)
+    gameCanvas.setAttribute('height', canvas.height)
+
+    document.documentElement.style.setProperty('--canvas-width', canvas.width + 'px')
+    document.documentElement.style.setProperty('--canvas-height', canvas.height + 'px')
 
     startCanvasRendering(context)
 })

@@ -1,3 +1,5 @@
+import {canvas} from '/script/canvas.js'
+
 export const coin = {
     centerX: 200,
     centerY: 200,
@@ -9,12 +11,9 @@ export const coin = {
     maxY: () => coin.centerY + coin.radius,
 }
 
-const canvasWidth  = 300
-const canvasHeight = 300
-
 export const moveCoin = () => {
-    coin.centerX = Math.random() * canvasWidth
-    coin.centerY = Math.random() * canvasHeight
+    coin.centerX = Math.random() * canvas.width
+    coin.centerY = Math.random() * canvas.height
 }
 
 export const renderCoin = (context) => {
