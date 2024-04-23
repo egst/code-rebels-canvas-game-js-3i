@@ -1,5 +1,6 @@
-import {getTime, timer, setTime} from '/script/timer.js'
-import {renderPlayer} from '/script/player.js'
+import {renderObstacle} from '/script/obstacle.js'
+import {renderPlayer}   from '/script/player.js'
+import {renderCoin}     from '/script/coin.js'
 
 const renderBackground = (context) => {
     context.fillStyle = 'white'
@@ -9,23 +10,14 @@ const renderBackground = (context) => {
     )
 }
 
-const renderRectangles = (context) => {
-    context.fillStyle = 'red'
-    context.fillRect(10, 20, 30, 40)
-    context.fillRect(50, 20, 30, 40)
-    context.fillStyle = 'blue'
-    context.fillRect(90, 20, 30, 40)
-}
-
-
-// TODO: Vyresit lip cekani na nacitani obrazku.
 /**
  * Render single frame of an animation in the given canvas.
  */
 const renderCanvasFrame = (context) => {
     renderBackground(context)
-    renderRectangles(context)
-    renderPlayer(context) // TODO: Import from player.
+    renderObstacle(context)
+    renderPlayer(context)
+    renderCoin(context)
 }
 
 /**
@@ -43,13 +35,5 @@ document.addEventListener('DOMContentLoaded', () => {
     const canvas = document.querySelector('#game-canvas')
     const context = canvas.getContext('2d')
 
-    // TODO: Consider not waiting for the image to load.
-    //image.addEventListener('load', () => {
-        startCanvasRendering(context)
-    //})
-
-    document.querySelector('#check-time').addEventListener('click', () => {
-        console.log(timer)
-        setTime(100)
-    })
+    startCanvasRendering(context)
 })

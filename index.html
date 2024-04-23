@@ -4,10 +4,38 @@
 
         <link rel="stylesheet" href="style.css">
 
+        <!-- font awesome: -->
+        <script src="https://kit.fontawesome.com/24cd9bdb68.js" crossorigin="anonymous"></script>
+
+        <!-- google fonts: -->
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap" rel="stylesheet">
+
+        <!-- gooogle font icons (material icons): -->
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+        <style>
+            .material-symbols-outlined {
+                font-variation-settings:
+                    'FILL' 0,
+                    'wght' 400,
+                    'GRAD' 0,
+                    'opsz' 24;
+            }
+        </style>
+
         <script src="script.js" type="module"></script>
     </head>
     <body>
-        <canvas id="game-canvas"></canvas>
-        <button id="check-time">check time</button>
+        <header id="top-bar">
+            <span id="coins-counter">0 coins</span>
+            <i class="fa-solid fa-sack-dollar"></i>
+            <span class="spacer"></span>
+            <i class="fa-solid fa-bars"></i>
+        </header>
+        <canvas id="game-canvas" width=300 height=300></canvas>
+        <nav id="game-menu">
+
+        </nav>
     </body>
 </html>
